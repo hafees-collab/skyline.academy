@@ -1,0 +1,1228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyline Academy — Academic Support & Student Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Dynamic Lighting Blobs -->
+  <div class="ambient-glow-wrapper">
+    <div class="ambient-orb orb-gold"></div>
+    <div class="ambient-orb orb-navy"></div>
+    <div class="ambient-orb orb-amber"></div>
+  </div>
+
+  <!-- Admin Live Preview Banner -->
+  <div id="admin-impersonation-banner" class="admin-preview-banner" style="display:none;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:1.1rem;">👁️</span>
+      <span><strong>Admin Live Preview</strong>: Viewing dashboard as <strong id="preview-student-target-name">...</strong></span>
+    </div>
+    <button class="btn btn-sm btn-gold" onclick="SkylineApp.exitPreview()">Return to Admin Control Panel &times;</button>
+  </div>
+
+  <!-- =========================================================================
+       PUBLIC WEBSITE HEADER & NAVIGATION
+       ========================================================================= -->
+  <header class="public-nav">
+    <div class="public-nav-container">
+      <div class="brand-logo" data-navigate="public-home" style="cursor:pointer;">
+        <div class="brand-icon"><img src="assets/skyline-logo.png" alt="Skyline Academy Logo"></div>
+        <div>
+          <span>Skyline Academy</span>
+          <span class="brand-tagline">SGOU Academic Support</span>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><span class="nav-link active" data-navigate="public-home">Home</span></li>
+          <li><span class="nav-link" data-navigate="public-about">About</span></li>
+          <li><span class="nav-link" data-navigate="public-services">Services</span></li>
+          <li><span class="nav-link" data-navigate="public-contact">Contact</span></li>
+        </ul>
+      </nav>
+
+      <div class="nav-auth-buttons">
+        <button class="btn btn-primary btn-sm" data-navigate="student-login">
+          <span>Student Portal</span>
+        </button>
+        <button class="btn btn-outline btn-sm" data-navigate="admin-login">
+          <span>Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slim Notice Bar (one tasteful note, not repeated) -->
+  <aside class="disclaimer-banner">
+    <strong>📌 Notice:</strong> Skyline Academy is an independent academic support academy for SGOU students. We provide tuition, study guidance, and exam preparation — not official degree or examination services.
+  </aside>
+
+  <!-- =========================================================================
+       PUBLIC VIEW: HOME
+       ========================================================================= -->
+  <main id="view-public-home" class="view-container">
+    <section class="public-hero">
+      <div class="hero-container">
+        <div class="hero-pill">
+          <span>🎓</span> Proudly Supporting SGOU Students
+        </div>
+        <h1 class="hero-title">Your Academic Success<br>Starts Here.</h1>
+        <p class="hero-subtitle">
+          Expert tuition, structured study materials, assignment guidance and exam coaching — all in one platform built for open university learners.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-gold" data-navigate="student-login">
+            <span>Access Student Portal</span> &rarr;
+          </button>
+          <button class="btn btn-outline-gold" data-navigate="public-services">
+            <span>Explore Services</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="stats-strip">
+      <div class="stats-strip-inner">
+        <div class="stat-item">
+          <span class="stat-number">92+</span>
+          <span class="stat-label">Enrolled Students</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Active Batches</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">11+</span>
+          <span class="stat-label">Programmes Supported</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Study Centres (LSC)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-wrapper">
+      <div class="section-header">
+        <div class="section-label-pill">How It Works</div>
+        <h2>Simple. Structured. Supportive.</h2>
+        <p class="text-muted">Three clear steps from enrolment to exam-ready confidence.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <h3>Enrol &amp; Get Access</h3>
+          <p class="text-muted">Join your batch and receive a personalised Student ID and secure portal access within 24 hours.</p>
+        </div>
+        <div class="how-step-arrow">&rarr;</div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <h3>Learn &amp; Prepare</h3>
+          <p class="text-muted">Attend live tuition sessions, download curated study notes, and get expert guidance on your assignments.</p>
+        </div>
+        <div class="how-step-arrow">&rarr;</div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <h3>Revise &amp; Excel</h3>
+          <p class="text-muted">Join focused exam revision batches, work through model papers, and walk into exams with confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section-wrapper">
+      <div class="section-header">
+        <div class="section-label-pill">What We Offer</div>
+        <h2>Academic Support Services</h2>
+        <p class="text-muted">Focused educational assistance designed around the SGOU curriculum and your programme needs.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F4BB;</div>
+          <h3>Online Tuition</h3>
+          <p class="text-muted">Structured lectures and concept sessions delivered by experienced subject tutors — live and recorded.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F4DD;</div>
+          <h3>Assignment Guidance</h3>
+          <p class="text-muted">Topic breakdowns, research structuring tips and reference materials to help you approach your assignments with clarity.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F4DA;</div>
+          <h3>Study Materials &amp; Notes</h3>
+          <p class="text-muted">Comprehensive, easy-to-digest chapter notes, summaries, and revision guides aligned with your SGOU syllabus.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F3AF;</div>
+          <h3>Examination Preparation</h3>
+          <p class="text-muted">Targeted revision sessions, previous-year question analysis, and mock exams to build real exam confidence.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F9ED;</div>
+          <h3>Academic Mentorship</h3>
+          <p class="text-muted">Personal counselling, semester planning, and ongoing support throughout your university journey.</p>
+        </div>
+        <div class="card service-card">
+          <div class="service-icon-box">&#x1F510;</div>
+          <h3>Student Portal</h3>
+          <p class="text-muted">A secure, personalised dashboard to track your subjects, access materials, and receive important announcements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section-wrapper" style="padding-top:0;">
+      <div class="card" style="background:linear-gradient(135deg,#14243A 0%,#1a3356 100%); color:#FAF9F6; padding:40px 32px; display:flex; flex-wrap:wrap; gap:28px; align-items:center; justify-content:space-between;">
+        <div style="max-width:620px;">
+          <span class="badge badge-gold" style="margin-bottom:12px;">Student Portal</span>
+          <h3 style="font-size:1.6rem; color:#FAF9F6; margin-bottom:10px;">Ready to access your dashboard?</h3>
+          <p style="color:rgba(250,249,246,0.75); line-height:1.7;">Log in to your secure Skyline Academy student portal to view your profile, enrolled subjects, assignment guidance materials, and the latest announcements from your batch.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <button class="btn btn-gold" data-navigate="student-login" style="min-width:200px;">
+            <span>Go to Student Portal</span> &rarr;
+          </button>
+          <button class="btn" style="border:1px solid rgba(250,249,246,0.3); color:#FAF9F6; background:transparent;" data-navigate="public-contact">
+            <span>Contact Us</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       PUBLIC VIEW: ABOUT
+       ========================================================================= -->
+  <main id="view-public-about" class="view-container" style="display:none;">
+    <section class="public-hero" style="padding:48px 24px;">
+      <div class="hero-container">
+        <h1 class="hero-title" style="font-size:2.2rem;">About Skyline Academy</h1>
+        <p class="hero-subtitle">Dedicated online academic support and EdTech guidance for open university students.</p>
+      </div>
+    </section>
+
+    <section class="section-wrapper">
+      <div style="max-width:840px; margin:0 auto; display:flex; flex-direction:column; gap:28px;">
+        <div class="card">
+          <h2 style="font-size:1.4rem; margin-bottom:12px;">Our Mission & Purpose</h2>
+          <p class="text-muted" style="margin-bottom:12px; line-height:1.7;">
+            Skyline Academy was founded to bridge the learning gap for students pursuing distance and open university education. Distance learning offers great flexibility, but students often face challenges in grasping complex syllabi, structuring assignments, and preparing systematically for examinations.
+          </p>
+          <p class="text-muted" style="line-height:1.7;">
+            We offer mentorship, structured online classes, and curated study notes to ensure every learner receives the highest quality academic assistance.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size:1.4rem; margin-bottom:12px;">University Support Scope</h2>
+          <p class="text-muted" style="margin-bottom:12px; line-height:1.7;">
+            The academy currently supports students enrolled in various undergraduate programmes at <strong>Sri Narayana Guru Open University (SGOU)</strong>, including B.Com, BBA, B.A English, B.A Malayalam, B.A Sociology, and B.A History.
+          </p>
+          <p style="font-size:0.9rem; color:#6B7280; margin-top:8px; border-left:3px solid #C9A44C; padding-left:12px;">Skyline Academy is an independent academic support service. We are not part of SGOU and do not issue degrees or evaluate official submissions.</p>
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       PUBLIC VIEW: SERVICES
+       ========================================================================= -->
+  <main id="view-public-services" class="view-container" style="display:none;">
+    <section class="public-hero" style="padding:48px 24px;">
+      <div class="hero-container">
+        <h1 class="hero-title" style="font-size:2.2rem;">Our Services</h1>
+        <p class="hero-subtitle">Comprehensive academic support programs designed for student success.</p>
+      </div>
+    </section>
+
+    <section class="section-wrapper">
+      <div class="grid-2">
+        <div class="card">
+          <div class="service-icon-box" style="margin-bottom:12px;">🎓</div>
+          <h3 style="margin-bottom:8px;">1. Online Tuition</h3>
+          <p class="text-muted">Regular live interactive sessions and recorded video tutorials covering core major papers, language courses, and allied subjects according to university syllabus schedules.</p>
+        </div>
+
+        <div class="card">
+          <div class="service-icon-box" style="margin-bottom:12px;">📝</div>
+          <h3 style="margin-bottom:8px;">2. Assignment Preparation Guidance</h3>
+          <p class="text-muted">Detailed analytical explanations, question breakdowns, and reference materials to help students understand topic requirements before writing their official assignments.</p>
+        </div>
+
+        <div class="card">
+          <div class="service-icon-box" style="margin-bottom:12px;">📖</div>
+          <h3 style="margin-bottom:8px;">3. Curated Study Materials</h3>
+          <p class="text-muted">Concise chapter-wise study notes, key concept summaries, and bilingual explanations prepared by experienced educators.</p>
+        </div>
+
+        <div class="card">
+          <div class="service-icon-box" style="margin-bottom:12px;">🔍</div>
+          <h3 style="margin-bottom:8px;">4. Examination Preparation</h3>
+          <p class="text-muted">Targeted revision sessions, question bank analysis, mock tests, and time management coaching designed for open university examination patterns.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       PUBLIC VIEW: CONTACT
+       ========================================================================= -->
+  <main id="view-public-contact" class="view-container" style="display:none;">
+    <section class="public-hero" style="padding:48px 24px;">
+      <div class="hero-container">
+        <h1 class="hero-title" style="font-size:2.2rem;">Contact Skyline Academy</h1>
+        <p class="hero-subtitle">Have questions regarding academic support or student enrollment? Get in touch with us.</p>
+      </div>
+    </section>
+
+    <section class="section-wrapper">
+      <div style="max-width:800px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div class="card">
+          <h3 style="margin-bottom:16px;">Contact Information</h3>
+          <div style="display:flex; flex-direction:column; gap:16px; font-size:0.95rem;">
+            <div>
+              <strong style="display:block; color:var(--secondary-text); font-size:0.8rem; text-transform:uppercase;">Phone</strong>
+              <span id="public-contact-phone">+91 98092 39448</span>
+            </div>
+            <div>
+              <strong style="display:block; color:var(--secondary-text); font-size:0.8rem; text-transform:uppercase;">Email</strong>
+              <span id="public-contact-email">contact@skylineacademy.in</span>
+            </div>
+            <div>
+              <strong style="display:block; color:var(--secondary-text); font-size:0.8rem; text-transform:uppercase;">Academic Support Hours</strong>
+              <span id="public-contact-hours">Mon - Sat: 9:00 AM - 6:00 PM</span>
+            </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:16px;">Academic Enquiry</h3>
+          <form onsubmit="event.preventDefault(); alert('Thank you for reaching out. An academic counselor will contact you shortly.'); this.reset();">
+            <div style="margin-bottom:12px;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Your Full Name</label>
+              <input type="text" class="input-field" placeholder="Enter your name" required>
+            </div>
+            <div style="margin-bottom:12px;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Mobile Number</label>
+              <input type="tel" class="input-field" placeholder="10-digit mobile number" required>
+            </div>
+            <div style="margin-bottom:12px;">
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Programme of Interest</label>
+              <select class="select-field">
+                <option>B.Com (Honours / General)</option>
+                <option>BBA (Honours / General)</option>
+                <option>B.A English</option>
+                <option>B.A Malayalam</option>
+                <option>B.A Sociology</option>
+                <option>B.A History</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       STUDENT LOGIN VIEW
+       ========================================================================= -->
+  <main id="view-student-login" class="view-container" style="display:none; padding:60px 24px;">
+    <div style="max-width:440px; margin:0 auto;">
+      <div class="glass-card" style="padding:32px;">
+        <div style="text-align:center; margin-bottom:24px;">
+          <div class="brand-logo" style="justify-content:center; margin-bottom:12px;">
+            <div class="brand-icon"><img src="assets/skyline-logo.png" alt="Skyline Academy Logo"></div>
+            <span>Skyline Academy</span>
+          </div>
+          <h2>Student Portal Login</h2>
+          <p class="text-muted" style="font-size:0.88rem; margin-top:4px;">Enter your registered Student ID and password to access your dashboard.</p>
+        </div>
+
+        <div id="student-login-error" style="display:none; background:#FEE2E2; color:#991B1B; padding:12px; border-radius:8px; font-size:0.88rem; margin-bottom:16px;"></div>
+
+        <form id="form-student-login">
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;">Student ID</label>
+            <input type="text" id="student-login-id" class="input-field" placeholder="e.g. SKY-26X-01" required autofocus style="text-transform:uppercase;">
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;">Password</label>
+            <input type="password" id="student-login-pass" class="input-field" placeholder="••••••••" required>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.85rem;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" id="student-login-remember"> Remember me
+            </label>
+            <a href="javascript:void(0)" onclick="SkylineApp.openModal('modal-student-reset-password')" style="color:var(--primary-navy); font-weight:600;">First time or reset?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding:11px;">
+            <span>Sign In to Student Portal</span> &rarr;
+          </button>
+        </form>
+
+        <div style="margin-top:24px; padding-top:16px; border-top:1px solid #E2E8F0; text-align:center; font-size:0.82rem; color:#6B7280;">
+          <span>Need assistance? Contact administration at </span>
+          <strong>+91 98092 39448</strong>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       ADMINISTRATOR LOGIN VIEW
+       ========================================================================= -->
+  <main id="view-admin-login" class="view-container" style="display:none; padding:60px 24px;">
+    <div style="max-width:440px; margin:0 auto;">
+      <div class="glass-card" style="padding:32px; border-top:4px solid var(--primary-navy);">
+        <div style="text-align:center; margin-bottom:24px;">
+          <div class="brand-logo" style="justify-content:center; margin-bottom:12px;">
+            <div class="brand-icon"><img src="assets/skyline-logo.png" alt="Skyline Academy Logo"></div>
+            <span>Skyline Academy</span>
+          </div>
+          <h2>Administrator Sign In</h2>
+          <p class="text-muted" style="font-size:0.88rem; margin-top:4px;">Authorized administrative access only.</p>
+        </div>
+
+        <div id="admin-login-error" style="display:none; background:#FEE2E2; color:#991B1B; padding:12px; border-radius:8px; font-size:0.88rem; margin-bottom:16px;"></div>
+
+        <form id="form-admin-login">
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;">Administrator ID</label>
+            <input type="text" id="admin-login-id" class="input-field" value="ADM-001" placeholder="e.g. ADM-001" required style="text-transform:uppercase;">
+          </div>
+
+          <div style="margin-bottom:20px;">
+            <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;">Password</label>
+            <input type="password" id="admin-login-pass" class="input-field" placeholder="••••••••" required>
+            <span style="font-size:0.75rem; color:#6B7280; display:block; margin-top:4px;">Initial setup password: <code>admin123</code></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding:11px;">
+            <span>Log In as Administrator</span> &rarr;
+          </button>
+        </form>
+
+        <div style="margin-top:24px; text-align:center;">
+          <a href="javascript:void(0)" data-navigate="public-home" style="font-size:0.85rem; color:#6B7280;">&larr; Return to Public Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       DYNAMIC STUDENT DASHBOARD VIEW
+       ========================================================================= -->
+  <main id="view-student-dashboard" class="view-container portal-layout" style="display:none;">
+    <!-- Portal Sidebar -->
+    <aside class="portal-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo light">
+          <div class="brand-icon"><img src="assets/skyline-logo.png" alt="Skyline Academy Logo"></div>
+          <div>
+            <span>Skyline Academy</span>
+            <span class="brand-tagline">Student Portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-user">
+        <div class="user-avatar-circle">🎓</div>
+        <div class="user-info-text">
+          <div class="user-info-name" id="student-display-name">Student Name</div>
+          <div class="user-info-sub" id="student-display-id">SKY-26X-00</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item">
+          <a class="sidebar-link active" href="javascript:void(0)">
+            <span class="icon">👤</span> My Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button id="btn-student-logout" class="btn btn-outline-gold btn-sm btn-block">
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Portal Content Area -->
+    <section class="portal-content">
+      <header class="portal-topbar">
+        <div>
+          <h2 style="font-size:1.35rem; color:var(--primary-navy);">Student Academic Dashboard</h2>
+          <span style="font-size:0.85rem; color:var(--secondary-text);">Sri Narayana Guru Open University (SGOU) Portal</span>
+        </div>
+        
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span id="student-badge-intake" class="badge badge-navy">Intake</span>
+          <span id="student-badge-sem" class="badge badge-gold">Semester</span>
+          <span id="student-badge-status" class="badge badge-active"><span class="pulse-dot"></span>Active</span>
+
+          <!-- Targeted Notification Bell -->
+          <div class="bell-btn-wrap">
+            <button id="btn-toggle-notif-drawer" class="notification-bell-btn" title="View Targeted Notifications">
+              <span>🔔</span>
+              <span id="student-notif-badge" class="bell-badge" style="display:none;">0</span>
+            </button>
+            <div id="student-notifications-drawer" class="notifications-drawer">
+              <div class="drawer-header">
+                <h4 style="font-size:0.95rem; margin:0; color:var(--primary-navy);">Targeted Academy Notices</h4>
+                <span class="badge badge-gold" style="font-size:0.7rem;">Live Feed</span>
+              </div>
+              <div id="student-drawer-notif-list" class="drawer-body">
+                <!-- Notifications populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="portal-body">
+
+        <!-- DYNAMIC HERO & DIGITAL ID CARD -->
+        <div class="student-dynamic-hero">
+          <!-- Left: Dynamic Greeting & Academic Progress -->
+          <div class="greeting-card">
+            <div>
+              <div class="greeting-pill">
+                <span>🎓</span> SGOU Enrolled Student
+              </div>
+              <h1 id="student-dynamic-greeting" class="greeting-title">Good morning, Student! ✨</h1>
+              <p class="greeting-sub">
+                Welcome back to your academic portal. Your verified semester subjects, study materials, and assignment distribution system are ready.
+              </p>
+            </div>
+
+            <!-- Semester Progress Bar -->
+            <div class="progress-box">
+              <div class="progress-header">
+                <span id="student-progress-text">Semester 3 of 6 — 55% Completed</span>
+                <span style="color:var(--light-gold);">Official SGOU Path</span>
+              </div>
+              <div class="progress-track">
+                <div id="student-progress-bar" class="progress-fill" style="width: 55%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Digital Smart Student ID Card -->
+          <div class="digital-id-card">
+            <div class="id-card-top">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div class="id-chip"></div>
+                <div>
+                  <span style="font-size:0.7rem; letter-spacing:0.12em; color:var(--light-gold); font-weight:800; text-transform:uppercase;">Skyline Academy</span>
+                  <span style="display:block; font-size:0.65rem; color:#94A3B8;">SGOU Verified Identity</span>
+                </div>
+              </div>
+              <span class="badge badge-gold" style="font-size:0.65rem;">ACTIVE ID</span>
+            </div>
+
+            <div class="id-card-body">
+              <div class="id-photo-frame" id="idcard-student-avatar">A</div>
+              <div>
+                <div id="idcard-student-name" class="id-student-name">Amina</div>
+                <div id="idcard-student-id" class="id-student-reg">SKY-26X-01</div>
+                <div id="idcard-student-prog" class="id-student-prog">B.A English</div>
+              </div>
+            </div>
+
+            <div class="id-card-footer">
+              <div>
+                <div>Batch: <strong id="idcard-student-intake" style="color:#FFF;">Intake 6</strong> • <strong id="idcard-student-sem" style="color:var(--light-gold);">3rd Sem</strong></div>
+                <div style="font-size:0.72rem; color:#CBD5E1; margin-top:2px;" id="idcard-student-lsc">Study Centre</div>
+              </div>
+              <div class="id-qr-box" title="Digital Verification QR Code">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="#0B1728"><path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm-2 10h8v8H2v-8zm2 2v4h4v-4H4zm10-14h8v8h-8V2zm2 2v4h4V4h-4zm2 10h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 0h2v2h-2v-2zm2-2h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-6-2h2v2h-2v-2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prominent Assignment Distributor Card -->
+        <div class="assignment-banner-card">
+          <div class="assignment-banner-text">
+            <span class="badge badge-gold" style="margin-bottom:8px;">University Assignment Materials</span>
+            <h3>SGOU Assignment Distribution Portal</h3>
+            <p>
+              Access your centre-allocated assignment materials and preparation guidance PDFs through our dedicated Google Apps Script distributor application.
+            </p>
+          </div>
+          <div>
+            <button id="btn-open-assignment-distributor" class="btn btn-gold" style="white-space:nowrap; padding:12px 20px;">
+              <span>Open Assignment System</span> &nearr;
+            </button>
+          </div>
+        </div>
+
+        <!-- 14 Structured Student Profile Details -->
+        <div class="glass-card" style="padding:24px; margin-bottom:24px;">
+          <div style="border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h3 style="font-size:1.2rem; color:var(--primary-navy);">Student Profile & Academic Information</h3>
+              <p class="text-muted" style="font-size:0.85rem;">Official enrolment details registered with Skyline Academy.</p>
+            </div>
+            <span class="badge badge-navy">14 Protected Fields</span>
+          </div>
+
+          <div id="student-profile-details" class="detail-grid">
+            <!-- Populated dynamically with 14 fields -->
+          </div>
+        </div>
+
+        <!-- Academic Subjects List -->
+        <div class="glass-card" style="padding:24px; margin-bottom:24px;">
+          <div style="border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:14px;">
+            <h3 style="font-size:1.2rem; color:var(--primary-navy);">Enrolled Subjects & Course Catalogue</h3>
+            <p class="text-muted" style="font-size:0.85rem;">Subjects currently assigned for your academic semester.</p>
+          </div>
+          <div id="student-subjects-list" class="subject-pill-group">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Academic Announcements -->
+        <div class="glass-card" style="padding:24px;">
+          <div style="border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:14px;">
+            <h3 style="font-size:1.2rem; color:var(--primary-navy);">Targeted Academic Notices & Updates</h3>
+            <p class="text-muted" style="font-size:0.85rem;">Official guidelines, class schedules, and study updates targeted to your batch.</p>
+          </div>
+          <div id="student-announcements-list">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       ADMINISTRATOR DASHBOARD VIEW
+       ========================================================================= -->
+  <main id="view-admin-students" class="view-container portal-layout" style="display:none;">
+    <!-- Admin Sidebar -->
+    <aside class="portal-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo light">
+          <div class="brand-icon"><img src="assets/skyline-logo.png" alt="Skyline Academy Logo"></div>
+          <div>
+            <span>Skyline Admin</span>
+            <span class="brand-tagline">Management Portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-user">
+        <div class="user-avatar-circle" style="background:#C9A44C; color:#0B1728;">A</div>
+        <div class="user-info-text">
+          <div class="user-info-name" id="admin-display-name">Administrator</div>
+          <div class="user-info-sub" id="admin-display-id">ADM-001</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item">
+          <a class="sidebar-link active admin-nav-item" data-admin-tab="admin-students" href="javascript:void(0)">
+            <span class="icon">👥</span> Student Management
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-broadcasts" href="javascript:void(0)">
+            <span class="icon">📢</span> Broadcast Notices
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-activity" href="javascript:void(0)">
+            <span class="icon">⚡</span> Student Logins & Activity
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-intakes" href="javascript:void(0)">
+            <span class="icon">📅</span> Intake Management
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-courses" href="javascript:void(0)">
+            <span class="icon">📖</span> Course Management
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-import" href="javascript:void(0)">
+            <span class="icon">📊</span> Excel Import / Export
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link admin-nav-item" data-admin-tab="admin-settings" href="javascript:void(0)">
+            <span class="icon">⚙️</span> Admin Settings
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button id="btn-admin-logout" class="btn btn-outline-gold btn-sm btn-block">
+          <span>Sign Out Admin</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Admin Content Area -->
+    <section class="portal-content">
+      <header class="portal-topbar">
+        <div>
+          <h2 style="font-size:1.35rem; color:var(--primary-navy);">Academy Administrative Control</h2>
+          <span style="font-size:0.85rem; color:var(--secondary-text);">Sri Narayana Guru Open University (SGOU) Portal</span>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-outline" data-navigate="public-home">View Public Site</button>
+        </div>
+      </header>
+
+      <div class="portal-body">
+        <!-- Overview Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon navy">👥</div>
+            <div>
+              <div class="stat-value" id="stat-total-students">92</div>
+              <div class="stat-label">Total Registered Students</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon gold">🎓</div>
+            <div>
+              <div class="stat-value" id="stat-intake6">74</div>
+              <div class="stat-label">Intake 6 (Semester 3)</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon gold">🌱</div>
+            <div>
+              <div class="stat-value" id="stat-intake8">18</div>
+              <div class="stat-label">Intake 8 (Semester 1)</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">⚡</div>
+            <div>
+              <div class="stat-value" id="stat-programmes">11</div>
+              <div class="stat-label">Academic Programmes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: STUDENT MANAGEMENT -->
+        <div id="pane-admin-students" class="admin-tab-pane">
+          <div class="card" style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
+              <div>
+                <h3 style="font-size:1.2rem;">Student Management Directory</h3>
+                <span id="filtered-count-display" style="font-size:0.85rem; color:#6B7280;">Showing students</span>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button class="btn btn-primary btn-sm" onclick="SkylineApp.openModal('modal-add-student')">
+                  <span>+ Add New Student</span>
+                </button>
+                <button id="btn-export-students-csv" class="btn btn-outline btn-sm">
+                  <span>Export CSV</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+              <div class="search-input-box">
+                <input type="text" id="filter-student-search" class="input-field" placeholder="Search by Student Name, ID, or Phone...">
+              </div>
+              <div style="min-width:140px;">
+                <select id="filter-student-intake" class="select-field"></select>
+              </div>
+              <div style="min-width:150px;">
+                <select id="filter-student-sem" class="select-field"></select>
+              </div>
+              <div style="min-width:170px;">
+                <select id="filter-student-programme" class="select-field"></select>
+              </div>
+              <div style="min-width:200px;">
+                <select id="filter-student-lsc" class="select-field"></select>
+              </div>
+              <div>
+                <button id="btn-reset-student-filters" class="btn btn-outline btn-sm">Reset</button>
+              </div>
+            </div>
+
+            <!-- Student Data Table with "Last Active" and "Preview Portal" -->
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Intake</th>
+                    <th>Semester</th>
+                    <th>Programme</th>
+                    <th>LSC Centre</th>
+                    <th>Last Active</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="students-table-body">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: BROADCAST NOTIFICATIONS -->
+        <div id="pane-admin-broadcasts" class="admin-tab-pane" style="display:none;">
+          <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:24px;">
+            <!-- Send Notification Form -->
+            <div class="card">
+              <h3 style="margin-bottom:14px; font-size:1.2rem;">Send Targeted Notification Broadcast</h3>
+              <p class="text-muted" style="margin-bottom:18px; font-size:0.88rem;">
+                Target announcements to all students, specific batches (like Intake 6, Intake 8, or Intake 7), or specific degree programmes.
+              </p>
+
+              <form id="form-create-broadcast">
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Notice Title</label>
+                  <input type="text" id="broadcast-title" class="input-field" placeholder="e.g. Assignment 1 Submission Deadline" required>
+                </div>
+
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Target Audience / Section</label>
+                  <select id="broadcast-target-select" class="select-field"></select>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                  <div>
+                    <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Category</label>
+                    <select id="broadcast-category" class="select-field">
+                      <option value="General Notice">General Notice</option>
+                      <option value="Assignment Alert">Assignment Alert</option>
+                      <option value="Exam Schedule">Exam Schedule</option>
+                      <option value="Class Notice">Class Notice</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Priority</label>
+                    <select id="broadcast-priority" class="select-field">
+                      <option value="Normal">Normal</option>
+                      <option value="High">High</option>
+                      <option value="Urgent">Urgent</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Message Content</label>
+                  <textarea id="broadcast-content" class="input-field" rows="4" placeholder="Type notification message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  <span>📢 Broadcast Notification</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Sent Broadcasts History -->
+            <div class="card">
+              <h3 style="margin-bottom:14px; font-size:1.2rem;">Active Broadcast Notices</h3>
+              <p class="text-muted" style="margin-bottom:18px; font-size:0.88rem;">Notifications currently visible on student portals.</p>
+              <div id="broadcast-history-list" style="max-height:460px; overflow-y:auto;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: STUDENT ACTIVITY STREAM -->
+        <div id="pane-admin-activity" class="admin-tab-pane" style="display:none;">
+          <div class="card">
+            <h3 style="margin-bottom:12px; font-size:1.2rem;">Student Sign-Ins & Portal Activity Stream</h3>
+            <p class="text-muted" style="margin-bottom:18px; font-size:0.88rem;">Live audit of student logins and learning resource accesses.</p>
+            <div id="activity-logs-container" style="background:#FAF9F6; border:1px solid #E2E8F0; border-radius:10px;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: INTAKE MANAGEMENT -->
+        <div id="pane-admin-intakes" class="admin-tab-pane" style="display:none;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+            <div class="card">
+              <h3 style="margin-bottom:14px;">Existing Batches & Intakes</h3>
+              <p class="text-muted" style="margin-bottom:16px; font-size:0.88rem;">
+                Intake and semester are strictly independent fields. Adding future intakes does not alter students' current or subsequent semesters.
+              </p>
+              <div id="intakes-list-container">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom:14px;">Add New Intake</h3>
+              <p class="text-muted" style="margin-bottom:16px; font-size:0.88rem;">Create future batch identifiers (e.g. Intake 7, Intake 9, Intake 10).</p>
+              <form id="form-add-intake">
+                <div style="margin-bottom:14px;">
+                  <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px;">Intake Name</label>
+                  <input type="text" id="add-intake-name" class="input-field" placeholder="e.g. Intake 7" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Intake Batch</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: COURSE MANAGEMENT -->
+        <div id="pane-admin-courses" class="admin-tab-pane" style="display:none;">
+          <div class="card" style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <div>
+                <h3 style="font-size:1.2rem;">Course & Subject Catalogue</h3>
+                <p class="text-muted" style="font-size:0.85rem;">Manage programmes and their mapped semester subjects.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="SkylineApp.openModal('modal-add-course')">+ Add Programme / Subjects</button>
+            </div>
+            <div id="courses-list-container">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: EXCEL IMPORT / EXPORT -->
+        <div id="pane-admin-import" class="admin-tab-pane" style="display:none;">
+          <div class="card" style="margin-bottom:20px;">
+            <h3 style="margin-bottom:12px;">Student Spreadsheet / CSV Importer</h3>
+            <p class="text-muted" style="margin-bottom:18px; font-size:0.9rem; line-height:1.6;">
+              Upload new student lists to import records into the portal. The importer automatically checks for duplicate Student IDs, preserves existing student records, and reports a comprehensive summary.
+            </p>
+
+            <div style="background:#FAF9F6; border:2px dashed #CBD5E1; padding:32px; border-radius:12px; text-align:center; margin-bottom:20px;">
+              <input type="file" id="import-excel-file" accept=".csv" style="display:none;">
+              <button class="btn btn-gold" onclick="document.getElementById('import-excel-file').click()">
+                <span>Select CSV / Student File to Import</span>
+              </button>
+              <span style="display:block; font-size:0.82rem; color:#6B7280; margin-top:8px;">Columns expected: Student Name, Student ID, Phone Number, Intake, Semester, Programme, Subjects, LSC Centre, Address</span>
+            </div>
+
+            <div id="import-summary-box"></div>
+          </div>
+        </div>
+
+        <!-- SUBPANE: ADMIN SETTINGS -->
+        <div id="pane-admin-settings" class="admin-tab-pane" style="display:none;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+            <div class="card">
+              <h3 style="margin-bottom:16px;">Administrator Profile & Platform Settings</h3>
+              <form id="form-admin-settings">
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Administrator Name</label>
+                  <input type="text" id="setting-admin-name" class="input-field" required>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Administrator ID</label>
+                  <input type="text" id="setting-admin-id" class="input-field" readonly style="background:#F1F5F9;">
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Email ID</label>
+                  <input type="email" id="setting-admin-email" class="input-field" required>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Assignment Web App URL (Google Apps Script)</label>
+                  <input type="url" id="setting-portal-url" class="input-field" placeholder="https://script.google.com/macros/s/.../exec" required>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Contact Phone</label>
+                  <input type="text" id="setting-contact-phone" class="input-field">
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Contact Email</label>
+                  <input type="email" id="setting-contact-email" class="input-field">
+                </div>
+                <div style="margin-bottom:14px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Notice / Announcement Banner</label>
+                  <textarea id="setting-notice" class="input-field" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom:16px;">Security & Password Management</h3>
+              <form id="form-admin-change-pass" style="margin-bottom:24px;">
+                <div id="admin-pass-error" style="display:none; background:#FEE2E2; color:#991B1B; padding:10px; border-radius:6px; font-size:0.85rem; margin-bottom:10px;"></div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Current Administrator Password</label>
+                  <input type="password" id="admin-pass-old" class="input-field" required>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">New Password (min 6 characters)</label>
+                  <input type="password" id="admin-pass-new" class="input-field" required>
+                </div>
+                <button type="submit" class="btn btn-outline">Update Password</button>
+              </form>
+
+              <div style="border-top:1px solid #E2E8F0; padding-top:18px;">
+                <h4 style="font-size:0.95rem; margin-bottom:8px; color:var(--error);">Database Reset</h4>
+                <p style="font-size:0.82rem; color:#6B7280; margin-bottom:12px;">Restore the student database back to the original 92 student records from the Excel workbook.</p>
+                <button id="btn-reset-to-seed" class="btn btn-sm btn-outline" style="color:var(--error); border-color:var(--error);">Reset to Original Seed Data</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+  <!-- Modal: View Student Full Profile -->
+  <div id="modal-view-student" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem;">Student Profile Record</h3>
+        <button class="btn btn-sm" data-close-modal="modal-view-student" style="background:transparent; border:none; font-size:1.3rem; cursor:pointer;">&times;</button>
+      </div>
+      <div id="modal-view-student-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" data-close-modal="modal-view-student">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Edit Student -->
+  <div id="modal-edit-student" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem;">Edit Student Record</h3>
+        <button class="btn btn-sm" data-close-modal="modal-edit-student" style="background:transparent; border:none; font-size:1.3rem; cursor:pointer;">&times;</button>
+      </div>
+      <form id="form-edit-student">
+        <div class="modal-body">
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Student ID</label>
+            <input type="text" id="edit-student-id" class="input-field" readonly style="background:#F1F5F9;">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Full Name</label>
+            <input type="text" id="edit-student-name" class="input-field" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Phone Number</label>
+            <input type="text" id="edit-student-phone" class="input-field">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Intake</label>
+              <input type="text" id="edit-student-intake" class="input-field" required>
+            </div>
+            <div>
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Semester</label>
+              <input type="text" id="edit-student-sem" class="input-field" required>
+            </div>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Programme</label>
+            <input type="text" id="edit-student-prog" class="input-field" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">LSC / Study Centre</label>
+            <input type="text" id="edit-student-lsc" class="input-field">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Address</label>
+            <textarea id="edit-student-address" class="input-field" rows="2"></textarea>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Subjects (Semicolon separated)</label>
+            <textarea id="edit-student-subjects" class="input-field" rows="3"></textarea>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Account Status</label>
+            <select id="edit-student-status" class="select-field">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-close-modal="modal-edit-student">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add New Student -->
+  <div id="modal-add-student" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem;">Add New Student Record</h3>
+        <button class="btn btn-sm" data-close-modal="modal-add-student" style="background:transparent; border:none; font-size:1.3rem; cursor:pointer;">&times;</button>
+      </div>
+      <form id="form-add-student">
+        <div class="modal-body">
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Student ID (Must be unique)</label>
+            <input type="text" id="add-student-id" class="input-field" placeholder="e.g. SKY-26X-119" required style="text-transform:uppercase;">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Full Name</label>
+            <input type="text" id="add-student-name" class="input-field" placeholder="Student name" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Phone Number</label>
+            <input type="tel" id="add-student-phone" class="input-field" placeholder="10-digit phone number" required>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Intake</label>
+              <select id="add-student-intake" class="select-field">
+                <option value="Intake 6">Intake 6</option>
+                <option value="Intake 8" selected>Intake 8</option>
+                <option value="Intake 7">Intake 7</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Semester</label>
+              <select id="add-student-sem" class="select-field">
+                <option value="1st Semester" selected>1st Semester</option>
+                <option value="2nd Semester">2nd Semester</option>
+                <option value="3rd Semester">3rd Semester</option>
+                <option value="4th Semester">4th Semester</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Programme</label>
+            <input type="text" id="add-student-prog" class="input-field" placeholder="e.g. B.Com (Honours)" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">LSC / Study Centre</label>
+            <input type="text" id="add-student-lsc" class="input-field" placeholder="e.g. Universal College, Mannarkkad">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Address</label>
+            <textarea id="add-student-address" class="input-field" rows="2" placeholder="Postal address"></textarea>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Assigned Subjects (Semicolon separated)</label>
+            <textarea id="add-student-subjects" class="input-field" rows="2" placeholder="Subject 1; Subject 2; ..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-close-modal="modal-add-student">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Create Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Course / Programme -->
+  <div id="modal-add-course" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem;">Add Programme & Subjects</h3>
+        <button class="btn btn-sm" data-close-modal="modal-add-course" style="background:transparent; border:none; font-size:1.3rem; cursor:pointer;">&times;</button>
+      </div>
+      <form id="form-add-course">
+        <div class="modal-body">
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Semester</label>
+            <select id="add-course-sem" class="select-field">
+              <option value="1st Semester">1st Semester</option>
+              <option value="2nd Semester">2nd Semester</option>
+              <option value="3rd Semester">3rd Semester</option>
+              <option value="4th Semester">4th Semester</option>
+              <option value="5th Semester">5th Semester</option>
+              <option value="6th Semester">6th Semester</option>
+            </select>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Programme Name</label>
+            <input type="text" id="add-course-prog" class="input-field" placeholder="e.g. B.Sc Psychology" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Subjects (One per line)</label>
+            <textarea id="add-course-subjects" class="input-field" rows="5" placeholder="Subject Name 1 (Code)&#10;Subject Name 2 (Code)" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-close-modal="modal-add-course">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Programme</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Student First-Time / Password Reset -->
+  <div id="modal-student-reset-password" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem;">Student Password Reset</h3>
+        <button class="btn btn-sm" data-close-modal="modal-student-reset-password" style="background:transparent; border:none; font-size:1.3rem; cursor:pointer;">&times;</button>
+      </div>
+      <form id="form-student-reset">
+        <div class="modal-body">
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:14px;">
+            Verify your identity using your Student ID and the mobile phone number registered with Skyline Academy.
+          </p>
+          <div id="student-reset-error" style="display:none; background:#FEE2E2; color:#991B1B; padding:10px; border-radius:6px; font-size:0.85rem; margin-bottom:12px;"></div>
+          <div id="student-reset-success" style="display:none; background:#DCFCE7; color:#166534; padding:10px; border-radius:6px; font-size:0.85rem; margin-bottom:12px;"></div>
+
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Student ID</label>
+            <input type="text" id="reset-student-id" class="input-field" placeholder="e.g. SKY-26X-01" required style="text-transform:uppercase;">
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Registered Mobile Number</label>
+            <input type="tel" id="reset-student-phone" class="input-field" placeholder="Enter your 10-digit number" required>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:0.82rem; font-weight:600; margin-bottom:4px;">Create New Password</label>
+            <input type="password" id="reset-student-newpass" class="input-field" placeholder="Min 6 characters" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm" data-close-modal="modal-student-reset-password">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm">Set Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="firebase-config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
